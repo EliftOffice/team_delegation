@@ -3,7 +3,7 @@ import React, { useState, useRef } from 'react';
 // Replace string below with the Google Apps Script Web App URL
 const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxk9xj8ZYWJ6gW3ZWQ06HbQmimXsn_0LhKaWqaaMih0j7QfkROh74esGi1fOghPtxu1ag/exec";
 
-const EMPLOYEES = ["Hanna", "Rancy", "Prisk", "Vikas", "Prasanna", "Raviteja"];
+const EMPLOYEES = ["Hanna", "Rancy", "Prisk", "Vikas", "Prasanna", "Raviteja", "Naga Sai", "Sai", "Team"];
 
 function App() {
   const [employee, setEmployee] = useState(EMPLOYEES[0]);
@@ -100,10 +100,9 @@ function App() {
 
       const response = await fetch(GOOGLE_SCRIPT_URL, {
         method: 'POST',
-        redirect: 'follow', // Important for Google Apps Script
+        redirect: 'follow',
         headers: {
           'Content-Type': 'text/plain;charset=utf-8',
-          // GAS requires plain text to avoid CORS Preflight failure limits in some cases.
         },
         body: JSON.stringify(payload)
       });
@@ -165,7 +164,7 @@ function App() {
                 onChange={handleChange}
               />
               <div className="upload-icon">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
                 </svg>
               </div>
@@ -178,7 +177,7 @@ function App() {
                 {preview && <img src={preview} alt="Preview" className="preview-thumb" />}
                 <span className="preview-name">{file.name}</span>
               </div>
-              <button type="button" className="remove-btn" onClick={removeFile} aria-label="Remove file">
+              <button type="button" className="remove-btn" onClick={removeFile}>
                 <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="20" height="20">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
